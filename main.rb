@@ -5,9 +5,16 @@
 #---------------------------------------------------------------------------------------------------------------------
 
 require 'tty-prompt'
+require_relative './classes/grooming'
+require_relative './classes/sevice'
+require_relative './classes/dog'
+require_relative './classes/add_on'
+require_relative './classes/confirmation'
+
+
 
 # Create Dog Grooming service 
-grooming = Deshedding.add_service(simple.new).add_service(deluxe.new).add_service(clip.new)
+grooming = Grooming.new.add_service(Basic.new).add_service(Deluxe.new).add_service(Clip.new)
 
 #Greeting 
 clear
@@ -140,8 +147,8 @@ while true
                 return 
             end 
         end
-end 
     end 
+end 
 
 
 
