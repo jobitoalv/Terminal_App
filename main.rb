@@ -4,6 +4,7 @@
 #
 #---------------------------------------------------------------------------------------------------------------------
 
+require 'tty-prompt'
 
 # Create Dog Grooming service 
 grooming = Deshedding.add_service(simple.new).add_service(deluxe.new).add_service(clip.new)
@@ -48,7 +49,7 @@ while true
 
 # Display menu option using TTY-Prompt gem
     Welcome(grooming)
-    selections = TTY::Prompt.new.select ("How can I help?  Please select from the following options:", cycle: true, marker: '>', echo: false) do |menu|
+    selection = TTY::Prompt.new.select("How can I help?  Please select from the following options:", cycle: true, marker: '√', echo: false,active_color: :cyan) do |menu|
         menu.choice('Make a new booking', 1)
         menu.choice('View an exiting appointment ', 2)
         menu.choice('View Grooming Services', 3)
@@ -86,7 +87,62 @@ while true
                 #booking has been created 
                 dog.booking = Booking.new(service, booking_date)
 
+                #Loading screen 
+                loading_screen("your booking is being finalize")
 
-          
-                
+                #display the finalize booking with total price 
+                clear
+                puts "Thank you for your booking"
+                dog.booking.display_booking(dog, grooming)
+                back_main_menu
             end
+
+#View an existing booking
+        when 2
+            if dog.booking
+                clear
+                dog.booking.display_booking(dog, grooming)
+                back_main_menu
+            else 
+                clear 
+                Welcome(grooming)
+                puts " oh seems like you don`t have a booking yet!"
+            end
+
+        when 3
+            view_service_header
+            service = grooming.select_service
+
+            service_name_header (service.type)
+            service.display_service
+            service.display_features
+            service.display_availability
+            back_main_menu
+#Fluffy tail information and contact details 
+        when 4
+            clear
+            grooming.grooming_information
+            back_main_menu
+#leaving page        
+        when 5
+            if dog.booking
+                clear
+                puts "Gracias amigo #{dog_name}"
+                puts " Can`t wait to make you looking all fancy"
+                puts " Give us a call if not sure about your booking!"
+                return 
+
+            else    
+                clear 
+                puts " Thank you for booking with us "
+                puts " Dont For get to follow us on social media "
+                puts " now go and play with your ball good boy /good girl"
+                return 
+            end 
+        end
+end 
+    end 
+
+
+
+
