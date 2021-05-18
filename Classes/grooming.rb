@@ -36,7 +36,7 @@ class Grooming
     end
 
     
-    def add_add_on(service)
+    def add_on(service)
         @service << service
         return self
     end
