@@ -1,0 +1,77 @@
+#---------------------------------------------------------------------------------------------------------------------
+#                            Fluffy Tails Dog Grooming 
+#                              Booking Terminal App
+#
+#---------------------------------------------------------------------------------------------------------------------
+
+
+# Create Dog Grooming service 
+grooming = Deshedding.add_service(simple.new).add_service(deluxe.new).add_service(clip.new)
+
+#Greeting 
+clear
+Welcome(grooming)
+
+#Dogs Details 
+puts "\n Hola me amigo !\n"
+puts "What is your Dog`s name: ?\n\n"
+
+#Creating a dog-loop to make sure sure types a name , this will exit out  if user doesnt enter anything in 3 tires.
+dog_name_count = 0
+while dog_name_count < 3
+    dog_name = gets.chop.capitalize
+
+#exit loop when user iputs a name 
+    if dog_name != ""
+        clear 
+        break 
+
+#Continues the loop until user input name 
+
+    else
+        dog_name_count += 1
+        if dog_name_count == 3
+            puts " Do you really have a Dog"
+            dog_name = "A dog without a name is just a Dog"
+        else
+            puts" opps you did it again , please enter your dog`s name:"
+        end 
+    end 
+end
+
+# Create a new dog object and print in with a greeting 
+dog = Dog.new(dog_name)
+puts " Woof woof #{dog.name}!!"
+
+# Main APP loop 
+while true
+
+# Display menu option using TTY-Prompt gem
+    Welcome(grooming)
+    selections = TTY::Prompt.new.select ("How can I help?  Please select from the following options:", cycle: true, marker: '>', echo: false) do |menu|
+        menu.choice('Make a new booking', 1)
+        menu.choice('View an exiting appointment ', 2)
+        menu.choice('View Grooming Services', 3)
+        menu.choice('View extra Services', 4)
+        menu.choice('View Booking confirmation', 5)
+        menu.choice('Exit', 6)
+
+        case selection
+#Making a new booking 
+        when 1
+
+            #Booking has already been created 
+            if bog.booking
+                clear 
+                welcome(grooming)
+                puts "You already have a booking with us"
+
+            #If there is no booking
+            else
+                new_booking_header 
+                service = grooming.select_service 
+
+
+          
+                
+            end
