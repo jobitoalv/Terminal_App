@@ -71,6 +71,21 @@ while true
                 new_booking_header 
                 service = grooming.select_service 
 
+                new_booking_header
+                service.display_service
+                service.display_features
+                booking_date = service.select_date
+
+                #Check if user has selected date
+                while booking_date.length == 0
+                    new_booking_header
+                    puts "please select a booking date that suits you"
+                    booking_date = service.select_date
+                end  
+
+                #booking has been created 
+                dog.booking = Booking.new(service, booking_date)
+
 
           
                 
