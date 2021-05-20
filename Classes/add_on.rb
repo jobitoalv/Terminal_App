@@ -29,4 +29,9 @@ class Ear < Add_on
     end
 end
 
-class 
+class Sensitive < Add_on
+    def initialize
+        super("Sensitive Skin Treatment", "Coconut oil and vitamin E handmade cream to apply on skin to leave your fog kin feeling calmer and less irritable", 10)
+    end 
+end 
+
