@@ -1,16 +1,18 @@
 require_relative 'dog'
+require_relative '../classes/method/header'
 
 
-class Confirmation
-    attr_reader :date
 
-    def initialize(service, date, add_on=nil)
+class Booking
+    attr_reader :booking, :service, :date, :add_on 
+    def initialize(booking, service, date, add_on=nil)
         @service = service
         @date = date
         @add_on = add_on
+        @booking = booking
     end
 
-    def display_confirmation(dog, grooming)
+    def display_booking(dog, grooming)
         puts  HEADER_LINE
         puts "#{dog.name.upcase}'S BOOKING".center(HEADER_LENGTH)
         puts HEADER_LINE
@@ -32,7 +34,7 @@ class Confirmation
         puts"Total Price : $#{'%.2f' % service.price}" .rjust(HEADER_LINE)
     end
 
-    def display_confirmation_add_on
+    def display_booking_add_on
         puts"Add Ons: "
 
         @add_on.each { |add_on| puts"     *#{add_on.name} - $#{add_on.price}"}
@@ -47,7 +49,7 @@ class Confirmation
         return add_on_total
     end
 
-    def Confirmation_price
+    def booking_price
         if @add_on
             return @service.price.to_f + add_on_price
         else

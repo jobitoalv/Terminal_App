@@ -2,9 +2,9 @@
 class Dog
     attr_accessor :service, :name, :weight,    
 
-    def initialize
+    def initialize(name, weight, service)
         @name = name 
         @weight = weight
-        @service = nil
+        @service = service
     end
 end 

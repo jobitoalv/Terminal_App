@@ -1,34 +1,35 @@
 require 'tty-prompt'
 
-HEADER_LINE = "_-----_---------_--------_----------_-----_-----_-----"
-HEADER_LINE = HEADER_LINE.length
+
+HEADER_LINE = "-::~:~::~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~::~:~::-"
+HEADER_LENGTH = HEADER_LINE.length
 
 def clear
     puts "\e[2j\e[f"
 end
 
-def any_key
+def back_main_menu
     puts "Press any key to go back to the grooming page"
     $stdin.getch
     clean
 end 
 
-def welcome(grooming)
+def welcome(salon)
     puts HEADER_LINE
     puts "Woof woof Welcome".center(header_line)
-    puts "#{grooming.name} grooming!".center(HEADER_LINE)
+    puts "#{slaon.name} grooming!".center(HEADER_LINE)
     puts HEADER_LINE
     puts 
 end 
 
 def new_booking_header
-    clean
+    clear
     puts HEADER_LINE
-    puts "Hey you wanna play a game? create a booking right now!".upcase.center(HEADER_LINE)
+    puts "Hey you wanna play a game? create a booking right now!"
     puts HEADER_LINE
 end
 
-def view_service_header
+def view_type_header
     clear 
     puts HEADER_LINE
     puts "Veiw Service".upcase.center(HEADER_LINE)

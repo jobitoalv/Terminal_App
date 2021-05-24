@@ -1,7 +1,7 @@
 require 'tty-prompt'
-require_relative '../methods/headers'
+require_relative '../classes/method/header'
 
-class Grooming
+class Salon
     attr_reader :service, :name
 
     # initialized the grooming 

@@ -1,13 +1,15 @@
 require_relative 'dog'
 
 
-class Service
+
+class GroomingService
     attr_reader :date
 
-    def initialize(service, date, add_on=nil)
+    def initialize(service, date, add_on=nil, available)
         @service = service
         @date = date
         @add_on = add_on
+        @available = available
     end 
 
     def display_service
@@ -62,3 +64,20 @@ class Service
 end
 
 
+class BasicService < GroomingService
+    def initialize
+        super("Basic",["Tidy up - Face , feet, hygiene area", "Full body brush", "undercoat removal"], 60, {Monday: "Available", Tuesday: "Available", Wednesday: "Available", Thursday: "Available", Friday: "Available", Saturday: "Available", Sunday: "Available"})
+    end 
+end 
+
+class FullBodyClipService < GroomingService
+    def initialize
+        super("Full Body Clip ",["Shorter Lenght", "Blow Dry", "Nail Trimming ", "Ear CLeaning"], 70, {Monday: "Available", Tuesday: "Available", Wednesday: "Available", Thursday: "Available", Friday: "Available", Saturday: "Available", Sunday: "Available"})
+    end 
+end 
+
+class DeluxeService < GroomingService
+    def initialize
+        super("Delux",["Breed/style body trim , scissor finish", "shampoo and conditioner bath", "tear stain treatment", "full body brunsh"], 85, {Monday: "Available", Tuesday: "Available", Wednesday: "Available", Thursday: "Available", Friday: "Available", Saturday: "Available", Sunday: "Available"})
+    end 
+end 
